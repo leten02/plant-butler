@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: secrets
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v5.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # 고정 버전 CLI를 사용해 조직 저장소의 gitleaks-action 라이선스 요건을 피한다.
+      # 같은 릴리스의 SHA-256 체크섬으로 다운로드 무결성을 확인한다.
+      - name: Install Gitleaks
+        shell: bash
+        env:
+          GITLEAKS_VERSION: "8.24.2"
+        run: |
+          set -euo pipefail
+          download_dir="$(mktemp -d)"
+          trap 'rm -rf "$download_dir"' EXIT
+          archive="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          checksums="gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+          release_url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+
+          curl --fail --silent --show-error --location --retry 3 \
+            "$release_url/$archive" -o "$download_dir/$archive"
+          curl --fail --silent --show-error --location --retry 3 \
+            "$release_url/$checksums" -o "$download_dir/$checksums"
+
+          (
+            cd "$download_dir"
+            awk -v file="$archive" '$2 == file { print }' "$checksums" > selected-checksum.txt
+            test "$(wc -l < selected-checksum.txt)" -eq 1
+            sha256sum --check selected-checksum.txt
+          )
+
+          tar -xzf "$download_dir/$archive" -C "$download_dir" gitleaks
+          install -m 0755 "$download_dir/gitleaks" "$RUNNER_TEMP/gitleaks"
+
+      - name: Scan full Git history
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/gitleaks" git \
+            --redact \
+            --log-opts="--all" \
+            .
+
+  app:
+    name: app
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CI: "true"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        with:
+          persist-credentials: false
+
+      - name: Detect Expo scaffold
+        id: package
+        shell: bash
+        run: |
+          if [[ -f package.json ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Notice before S0
+        if: steps.package.outputs.present == 'false'
+        run: echo "::notice::package.json is absent. App checks are deferred until the S0 Expo scaffold."
+
+      - name: Setup Node.js
+        if: steps.package.outputs.present == 'true'
+        uses: actions/setup-node@v5.0.0
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        if: steps.package.outputs.present == 'true'
+        run: npm ci
+
+      - name: Typecheck
+        if: steps.package.outputs.present == 'true'
+        run: npm run typecheck
+
+      - name: Lint
+        if: steps.package.outputs.present == 'true'
+        run: npm run lint
+
+      - name: Test
+        if: steps.package.outputs.present == 'true'
+        run: npm test --if-present
