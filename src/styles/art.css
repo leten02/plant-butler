@@ -1,0 +1,190 @@
+/* 그림 입히기: overlay.css의 뼈대 위에 아이콘·프레임 그림을 얹는다. 프레임 이미지는 tools/slice_art.py가 만든다. */
+:root {
+  --f-panel: url(../assets/ui/panel.png);
+  --f-primary: url(../assets/ui/btn-primary.png);
+  --f-primary-down: url(../assets/ui/btn-primary-pressed.png);
+  --f-primary-off: url(../assets/ui/btn-primary-disabled.png);
+  --f-secondary: url(../assets/ui/btn-secondary.png);
+  --f-secondary-down: url(../assets/ui/btn-secondary-pressed.png);
+}
+
+/* ---- 아이콘 크기 ---- */
+.ui-icon { width: 24px; height: 24px; display: block; pointer-events: none; }
+.hud-btn .icon { width: 26px; height: 26px; display: block; }
+.talk-btn .icon { width: 28px; height: 28px; display: block; }
+.packet-btn .icon { width: 24px; height: 24px; display: block; }
+.act-icon { width: 30px; height: 30px; flex: none; }
+.card-icon { width: 44px; height: 44px; flex: none; }
+.card-title .leaf { width: 20px; height: 20px; }
+.mission-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex: none; }
+.mission-icon img { width: 40px; height: 40px; }
+.detail-art { font-size: 0; }
+.detail-img { width: 88px; height: 88px; }
+.reflect-activity { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.reflect-activity .act-icon { width: 40px; height: 40px; }
+.book-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; }
+.book-icon img { width: 44px; height: 44px; }
+.packet-art { display: flex; justify-content: center; font-size: 0; }
+.packet-img { width: 88px; height: 88px; }
+.talk-avatar { display: flex; justify-content: center; font-size: 0; }
+.sprout-icon { width: 72px; height: 72px; }
+
+/* ---- 이름판 ---- */
+.garden-name {
+  left: 6px; top: -12px; width: 164px; height: 111px; min-width: 0; padding: 0; display: block; gap: 0;
+  background: url(../assets/ui/name-sign.png) center / 100% 100% no-repeat; border: 0; border-radius: 0; box-shadow: none;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.2));
+}
+.garden-name strong {
+  position: absolute; left: 36px; top: 36px; width: 106px; height: 30px; display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: #fff; text-shadow: 0 1px 0 rgba(60, 35, 15, 0.8), 0 0 3px rgba(60, 35, 15, 0.6);
+}
+.garden-name span {
+  position: absolute; left: 24px; top: 79px; width: 116px; height: 19px; display: flex; align-items: center; justify-content: center;
+  padding: 0; background: none; border-radius: 0; font-size: 11px; color: var(--ink);
+}
+
+/* ---- HUD 버튼 ---- */
+.hud-btn {
+  width: 60px; height: 60px; min-height: 60px; padding: 8px 0 2px 7px; gap: 0;
+  background: url(../assets/ui/icon-frame.png) center / 100% 100% no-repeat; border: 0; border-radius: 0; box-shadow: none;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.18));
+}
+.hud-btn .label { margin-top: 0; font-size: 11px; }
+.talk-btn {
+  width: 64px; height: 66px; padding-top: 4px; background: url(../assets/ui/round-frame.png) center / 100% 100% no-repeat; border: 0; border-radius: 0;
+  box-shadow: none; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+}
+.icon-btn {
+  background: url(../assets/ui/icon-frame.png) center / 100% 100% no-repeat; border: 0; border-radius: 0;
+  display: flex; align-items: center; justify-content: center; padding: 4px 0 0 4px;
+}
+.icon-btn .ui-icon { width: 22px; height: 22px; }
+
+/* ---- 패널·카드: 나무 테두리 프레임 ---- */
+.panel {
+  max-height: 388px; padding: 0 4px 2px; background: none; border: 0 solid transparent; border-width: 14px; border-radius: 0;
+  border-image: var(--f-panel) 20 fill / 14px stretch; box-shadow: none; filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.25));
+}
+.panel::before, .panel::after { content: ''; position: absolute; pointer-events: none; background-size: 100% 100%; background-repeat: no-repeat; }
+.panel::before { left: -9px; top: -14px; width: 42px; height: 35px; background-image: url(../assets/ui/vine-tl.png); }
+.panel::after { right: -14px; bottom: -14px; width: 31px; height: 29px; background-image: url(../assets/ui/vine-br.png); }
+.activity-card {
+  padding: 0 0 2px; background: none; border: 0 solid transparent; border-width: 14px; border-radius: 0;
+  border-image: var(--f-panel) 20 fill / 14px stretch; box-shadow: none; filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.25));
+}
+.toast {
+  min-width: 240px; min-height: 64px; padding: 6px 2px; display: flex; flex-direction: column; justify-content: center; background: none; border: 0 solid transparent; border-width: 0 22px; border-radius: 0;
+  border-image: url(../assets/ui/toast.png) 0 36 0 36 fill / 0 22px stretch; box-shadow: none; filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.2));
+}
+
+/* ---- 버튼: 알약 프레임 ---- */
+.btn, .btn-chip, .chip, .tab {
+  min-height: var(--tap); padding: 0 2px; background: none; border: 0 solid transparent; border-width: 12px 14px; border-radius: 0;
+  border-image: var(--f-secondary) 20 fill / 12px 14px stretch; color: var(--ink); line-height: 1.1;
+  display: flex; align-items: center; justify-content: center; box-shadow: none;
+}
+.btn { width: 100%; }
+.btn-primary, .btn-chip-primary, .chip-on, .tab[aria-selected='true'] {
+  border-image-source: var(--f-primary); border-image-slice: 24 28 22 28 fill; color: #fff; background: none; text-shadow: 0 1px 0 rgba(20, 50, 15, 0.45);
+}
+.btn-secondary:active, .btn-chip:not(.btn-chip-primary):active, .chip:not(.chip-on):active { border-image-source: var(--f-secondary-down); }
+.btn-primary:active:not(:disabled), .btn-chip-primary:active { border-image-source: var(--f-primary-down); border-image-slice: 20 fill; }
+.btn-primary:disabled { border-image-source: var(--f-primary-off); border-image-slice: 20 fill; opacity: 1; color: #eef2e8; }
+.tab { padding: 0 8px; }
+.btn-chip { padding: 0 2px; }
+.btn-pair .btn { font-size: 12px; }
+.mission-actions .btn-chip { min-width: 66px; }
+
+.packet-btn { top: 104px; }
+.mission-info small { display: block; }
+.reflect { width: 440px; }
+
+/* 설정의 체크 칸 */
+.switch input {
+  appearance: none; -webkit-appearance: none; width: 28px; height: 28px; flex: none; margin: 0; cursor: pointer;
+  background: #fff; border: 2px solid var(--panel-edge); border-radius: 8px;
+}
+.switch input:checked {
+  border-color: #1f4f18; background: #2f6a24 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 80% no-repeat;
+}
+
+/* 머리말이 없는 패널(여력 체크·회고·봉투)의 제목이 테두리에 붙지 않게 */
+.panel > .panel-title:first-child { margin-top: 8px; }
+
+/* ---- 시야(배율) 조절 ---- */
+.zoom-ctl {
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px;
+  padding: 4px 8px; background: rgba(255, 249, 237, 0.92); border: 2px solid var(--panel-edge); border-radius: 22px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+}
+.zoom-btn {
+  width: var(--tap); height: var(--tap); flex: none; font-size: 24px; line-height: 1; font-weight: 700; color: var(--ink);
+  background: var(--sand); border: 2px solid var(--panel-edge); border-radius: 50%;
+}
+.zoom-range { width: 100px; height: var(--tap); margin: 0; accent-color: #2f6a24; cursor: pointer; }
+.zoom-label { min-width: 38px; font-size: 12px; text-align: center; color: var(--ink-soft); }
+
+/* ---- 열매·선물·상점·주민 ---- */
+.left-stack { position: absolute; left: 10px; top: 104px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.left-stack .packet-btn { position: static; }
+.fruit-badge {
+  display: flex; align-items: center; gap: 6px; padding: 5px 12px 5px 8px; font-size: 13px; font-weight: 700; color: var(--ink);
+  background: rgba(255, 249, 237, 0.92); border: 2px solid var(--panel-edge); border-radius: 20px; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+}
+.fruit-icon { width: 24px; height: 24px; }
+.gift-btn { background: #fff0c4; }
+
+.shop { width: 620px; }
+.shop-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.shop-say { margin: 0; font-size: 14px; min-width: 0; }
+.shop-balance { flex: none; font-size: 14px; padding: 3px 12px; background: var(--sand); border: 2px solid var(--panel-edge); border-radius: 14px; }
+.shop-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.shop-card { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 4px 4px 6px; background: #fff; border: 2px solid var(--sand); border-radius: 10px; }
+.shop-card strong { font-size: 13px; }
+.shop-img { display: flex; align-items: center; justify-content: center; height: 42px; }
+.shop-img img { height: 40px; width: auto; max-width: 96px; }
+.shop-card .btn-chip { min-width: 112px; font-size: 12px; }
+
+.gift { width: 360px; text-align: center; }
+
+.npc-face { width: 72px; height: 72px; display: block; }
+
+/* 지금 누를 수 없는 작은 버튼 */
+.btn-chip:disabled { opacity: .5; filter: grayscale(.6); cursor: default; }
+
+/* 이야기 선택지 */
+.story-choices { display: flex; flex-direction: column; gap: 6px; }
+.story-choices .btn { min-height: 44px; }
+.talk-compact .talk-bubble { padding: 4px 8px 6px; gap: 6px; }
+.talk-compact .npc-face { width: 44px; height: 44px; }
+.talk-bubble p { word-break: keep-all; }
+
+/* 방문 도장판: 7칸씩 두 줄. 기념 선물 칸은 받기 전에 흐리게, 받은 뒤에 또렷하게 */
+.gift { width: 380px; }
+.gift .packet-art { display: none; } /* 한 화면(372px)에 들어오게 큰 아이콘은 뺀다. 머리말과 도장판이 선물함임을 말해 준다 */
+.stamp-board { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin: 2px 0; }
+.stamp {
+  display: flex; align-items: center; justify-content: center; aspect-ratio: 1; min-height: 36px;
+  background: #fff; border: 2px solid var(--sand); border-radius: 10px; color: #b3a48c; font-size: 13px; font-weight: 700;
+}
+.stamp-on { background: #eaf5d8; border-color: #9cc46b; }
+.stamp-gift { border-style: dashed; }
+.stamp-gift.stamp-on { border-style: solid; background: #fff0c4; border-color: #d9a93a; }
+.stamp-icon { width: 26px; height: 26px; object-fit: contain; display: block; }
+.stamp-wait .stamp-icon { opacity: .4; filter: grayscale(.5); }
+.stamp-got, .stamp-wait { display: flex; }
+.stamp-num { opacity: .6; }
+
+/* 가방: 탭 세 개. 본문은 한 화면(372px)에 들어가게 스크롤한다 */
+.bag { width: 420px; text-align: center; }
+.bag-body { display: flex; flex-direction: column; gap: 6px; min-height: 250px; max-height: 280px; overflow-y: auto; padding-right: 2px; }
+
+/* 아래쪽 메뉴: 조이스틱과 대화 버튼 사이. 시야 조절은 위쪽으로 옮겼다 */
+.bottom-menu { position: absolute; left: 50%; bottom: 10px; transform: translateX(-62%); display: flex; gap: 8px; }
+.zoom-ctl { left: auto; right: 76px; top: 18px; bottom: auto; transform: none; }
+.records .stamp-board { width: 340px; margin: 2px auto; }
+.records { text-align: center; }
+.bag-body { min-height: 200px; max-height: 250px; }
+.zoom-ctl .zoom-label { display: none; }
+.zoom-ctl .zoom-range { width: 72px; }

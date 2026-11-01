@@ -1,0 +1,15 @@
+:root {
+  --cream: #fbf6e6;
+  --panel: #fffaf0;
+  --panel-edge: #c9b48a;
+  --wood: #6b4a2b;
+  --wood-dark: #4a3320;
+  --green: #2f6a24;
+  --green-light: #3f7a2a;
+  --sand: #efe3c4;
+  --ink: #3b2f2a;
+  --ink-soft: #6a5a48;
+  --radius: 10px;
+  --tap: 44px;
+  --font: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', system-ui, sans-serif;
+}
