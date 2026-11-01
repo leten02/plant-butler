@@ -1,0 +1,18 @@
+[
+  { "id": "cafe", "name": "카페 다녀오기", "minutes": 30, "kind": "outing", "smallerId": "near-home", "icon": "☕" },
+  { "id": "near-home", "name": "집 앞까지 다녀오기", "minutes": 10, "kind": "outing", "smallerId": "door-out", "icon": "🏠" },
+  { "id": "door-out", "name": "현관 밖에 잠깐 나가기", "minutes": 2, "kind": "outing", "smallerId": null, "icon": "🚪" },
+  { "id": "walk5", "name": "집 앞 5분 걷기", "minutes": 5, "kind": "outing", "smallerId": "door-out", "icon": "🚶" },
+  { "id": "meal", "name": "따뜻한 한 끼 챙겨 먹기", "minutes": 20, "kind": "selfcare", "smallerId": "water", "icon": "🍚" },
+  { "id": "shower", "name": "따뜻하게 샤워하기", "minutes": 15, "kind": "selfcare", "smallerId": "wash", "icon": "🚿" },
+  { "id": "wash", "name": "세수하기", "minutes": 3, "kind": "selfcare", "smallerId": "water", "icon": "🧼" },
+  { "id": "water", "name": "물 한 잔 마시기", "minutes": 1, "kind": "selfcare", "smallerId": null, "icon": "💧" },
+  { "id": "window", "name": "창문 열고 바람 쐬기", "minutes": 2, "kind": "selfcare", "smallerId": null, "icon": "🪟" },
+  { "id": "music", "name": "좋아하는 음악 한 곡 듣기", "minutes": 4, "kind": "joy", "smallerId": null, "icon": "🎵" },
+  { "id": "draw", "name": "낙서 5분 해보기", "minutes": 5, "kind": "joy", "smallerId": "music", "icon": "✏️" },
+  { "id": "book", "name": "책 한 쪽 읽기", "minutes": 5, "kind": "joy", "smallerId": "music", "icon": "📖" },
+  { "id": "message", "name": "안부 메시지 한 줄 보내기", "minutes": 3, "kind": "connect", "smallerId": null, "icon": "💌" },
+  { "id": "call", "name": "가까운 사람과 짧게 통화하기", "minutes": 10, "kind": "connect", "smallerId": "message", "icon": "📞" },
+  { "id": "water-plant", "name": "화분에 물 주기", "minutes": 3, "kind": "plant", "smallerId": null, "icon": "🪴" },
+  { "id": "sunlight", "name": "화분 햇빛 쪽으로 옮겨주기", "minutes": 2, "kind": "plant", "smallerId": null, "icon": "🌞" }
+]
