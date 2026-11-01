@@ -1,48 +1,41 @@
-# 오늘 한걸음
+# 식물집사 — 일상 회복 앱 데모
 
-상담·치료를 마친 사람이 일과를 놓친 다음 날 다시 시작하도록 돕는 게임형 일상 회복 지원 앱.
-가천대 Tech for Impact 3팀 식물집사 · 멘토기관 그린테라피.
+작은 현실 행동을 고르고 해내면, 그 기록이 정원에 쌓이는 발표용 데모. 서버·로그인·결제 없음.
 
-> 이 앱은 진단·상담·치료를 하지 않습니다. 위기 상황에서는 109(자살예방상담) 또는 1577-0199(정신건강위기상담)로 연락하세요.
+## 실행
+```bash
+npm install
+npm run dev     # http://localhost:5173 (가로 화면 844×390 기준)
+npm test        # core 단위 테스트
+npm run build
+```
+조작: 방향키 / WASD / 화면 조이스틱.
+
+## 그래픽
+배경·새싹이·소품은 팀 가이드(`art/guide`, A 테마) 그림이고 `python3 tools/slice_art.py`가 `public/assets`를 만든다. 아래는 이전(플레이스홀더) 시절 설명이다.
+
+현재는 코드로 그린 플레이스홀더(`src/scene/assets.ts`, 새싹이는 `src/scene/sprites.ts`).
+Kenney 등 CC0 PNG로 바꿀 때는 `assets.ts`의 텍스처 키(`prop_*`, `terrain`)만 교체한다.
+
+### 출처
+- (에셋 교체 시 여기에 적는다. 예: Kenney "Tiny Town", CC0, https://kenney.nl)
+
+## 데모 모드 (발표용)
+설정 → 데모 모드를 켜면 [다음 날로]와 [샘플 데이터 채우기]가 나온다.
+- 샘플 데이터: 지난 14일치 기록·소품·식물. 오늘은 비워 두고, 최근 이틀의 씨앗 봉투는 열지 않은 채 남는다.
+- 디버그 줄에 "직접 계획 비율"이 나온다(일반 화면에는 노출하지 않음).
+- 테스트용 주소: `/?decor`(소품 7개), `/?packet=3`(지난 3일치 씨앗 봉투).
 
 ## 문서
+서비스 맥락·스펙·결정 사항은 `docs/spec.md`, Claude Code용 작업 규칙은 `CLAUDE.md`, 화면 참고 이미지는 `docs/reference/`.
 
-- [PRD](docs/PRD.md): 범위, 용어, 이벤트 사전, 지표, 화면별 완료 조건
-- [작업 단위 명세](docs/slices/): Codex가 구현할 슬라이스별 명세 (S0부터)
-- [개발 컨벤션](docs/CONVENTIONS.md): 깃 플로우, 커밋·PR 규칙, 코드 규칙, CI
-- [개발 계획서](docs/notion-plan.md): 역할 분담, 일정, 작업 규칙 (노션에도 같은 내용)
-- [서비스 기획서](https://claude.ai/artifact/NzWckAZavug2FuwvZcMN9p)
+## 기술 스택
+Vite 8 · TypeScript · React 18(화면) · Phaser 3(정원) · Vitest. 서버 없음, 저장은 브라우저 localStorage. 이전 순수 HTML 화면 코드는 `legacy/dom-ui/`에 남겨 두었다(빌드 대상 아님).
 
-## 폴더 구조
+## 구조
+`src/core`(규칙·데이터·저장, Phaser·DOM 모름) / `src/scene`(Phaser 정원) / `src/ui`(HTML 오버레이). 서로는 `core/events.ts`로만 대화한다.
+문구는 모두 `core/copy.ts`에 있고, 금지 표현은 `npm test`가 검사한다.
 
-```
-app/                 expo-router 화면
-src/features/
-  mission/           미션 흐름, 2·3단계 계획 (B)
-  garden/            정원, 꽃, 복귀 메시지, 기록 (A)
-  safety/            긴급 연결 (C)
-  onboarding/        처음 시작 (C)
-src/lib/             Supabase 클라이언트, 이벤트 기록, 날짜 유틸 (C)
-src/components/      공용 UI
-assets/              픽셀 에셋, 폰트
-supabase/migrations/ 테이블·RLS SQL
-supabase/seed.sql    미션 시드
-docs/                PRD, 개발 계획서
-```
-
-## 실행 방법
-
-S0(프로젝트 뼈대) 작업이 끝나면 아래 순서로 실행합니다.
-
-1. Node.js 22 설치
-2. 의존성 설치: `npm install`
-3. `.env.example`을 `.env`로 복사하고 Supabase URL과 anon key 입력 (팀 채널에서 받기, 커밋 금지)
-4. 실행: `npx expo start` → 휴대폰 Expo Go 앱으로 QR 스캔
-5. 확인: `npm run typecheck`, `npm run lint`
-
-## 작업 방식
-
-1. 이슈에서 슬라이스를 고르고 브랜치 생성: `git switch -c s2-mission-loop`
-2. 구현 후 실제 기기에서 확인
-3. PR 생성 → 다른 역할의 개발자 1명 리뷰 (안전·문구·개인정보 관련은 `needs-all-approvals` 라벨 + 3명 확인)
-4. CI(`secrets`, `app`) 통과 후 squash merge
+## 진행 상황
+M1~M5 구현 완료. 소리 파일은 없고 "소리 끄기" 설정 값만 저장한다.
+이후 UX 보완(꽃 시각 구분, 바꾸기/더 작게, 소품 창고) 진행 중 — 자세한 내용과 사람 확인 필요 항목은 `docs/spec.md` 5절 참고.
