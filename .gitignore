@@ -11,5 +11,3 @@ android/
 !.env.example
 supabase/.temp/
 .context/
-
-__pycache__/
