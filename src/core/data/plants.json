@@ -1,0 +1,120 @@
+[
+  {
+    "id": "dandelion",
+    "name": "민들레",
+    "icon": "🌼",
+    "petal": "#ffd23f",
+    "center": "#f0a500",
+    "pattern": "fluff"
+  },
+  {
+    "id": "violet",
+    "name": "제비꽃",
+    "icon": "🪻",
+    "petal": "#8e6bd1",
+    "center": "#ffe27a",
+    "pattern": "droop"
+  },
+  {
+    "id": "clover",
+    "name": "클로버",
+    "icon": "🍀",
+    "petal": "#58b857",
+    "center": "#3f8a35",
+    "pattern": "leaf3"
+  },
+  {
+    "id": "sunflower",
+    "name": "해바라기",
+    "icon": "🌻",
+    "petal": "#ffc21a",
+    "center": "#6b4a2b",
+    "pattern": "disc",
+    "rare": true
+  },
+  {
+    "id": "cosmos",
+    "name": "코스모스",
+    "icon": "🌸",
+    "petal": "#f48fb1",
+    "center": "#ffd95a",
+    "pattern": "rays8"
+  },
+  {
+    "id": "lavender",
+    "name": "라벤더",
+    "icon": "🌾",
+    "petal": "#9b7bd4",
+    "center": "#c9b3f0",
+    "pattern": "spike",
+    "rare": true
+  },
+  {
+    "id": "hydrangea",
+    "name": "수국",
+    "icon": "💠",
+    "petal": "#7aa7f0",
+    "center": "#c7dcff",
+    "pattern": "umbrella",
+    "rare": true
+  },
+  {
+    "id": "tulip",
+    "name": "튤립",
+    "icon": "🌷",
+    "petal": "#ef6f7e",
+    "center": "#ffb3bd",
+    "pattern": "cup"
+  },
+  {
+    "id": "daisy",
+    "name": "데이지",
+    "icon": "🏵️",
+    "petal": "#ffffff",
+    "center": "#ffd23f",
+    "pattern": "rays12"
+  },
+  {
+    "id": "hibiscus",
+    "name": "무궁화",
+    "icon": "🌺",
+    "petal": "#f06292",
+    "center": "#ffe27a",
+    "pattern": "trumpet"
+  },
+  {
+    "id": "lily-of-valley",
+    "name": "은방울꽃",
+    "icon": "🔔",
+    "petal": "#fffaf0",
+    "center": "#cfe8c0",
+    "pattern": "bell-small",
+    "rare": true
+  },
+  {
+    "id": "narcissus",
+    "name": "수선화",
+    "icon": "🌿",
+    "petal": "#ffe27a",
+    "center": "#ff9a5a",
+    "pattern": "bell-trumpet"
+  },
+  {
+    "id": "apple_tree",
+    "name": "사과나무",
+    "icon": "🍎",
+    "petal": "#d63e3a",
+    "center": "#5c943e",
+    "pattern": "disc",
+    "tree": true
+  },
+  {
+    "id": "peach_tree",
+    "name": "복숭아나무",
+    "icon": "🍑",
+    "petal": "#f0966e",
+    "center": "#5c943e",
+    "pattern": "disc",
+    "tree": true
+  }
+]

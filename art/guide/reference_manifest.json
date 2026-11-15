@@ -1,0 +1,116 @@
+{
+  "snapshot_date": "2026-10-29",
+  "guide_version": "1.0.0",
+  "references": [
+    {
+      "id": "character_master",
+      "file": "references/character_master.png",
+      "source_workspace_relative": "outputs/garden_app_assets/characters/sprout_idle.png",
+      "width": 416,
+      "height": 416,
+      "mode": "RGBA",
+      "sha256": "74f67b66a208d79744225dd261f0a67a21ef4f8d463a8ce0098dc834be7762ea",
+      "role": "캐릭터 정체성 원본"
+    },
+    {
+      "id": "character_poses",
+      "file": "references/character_poses.png",
+      "source_workspace_relative": "outputs/garden_app_assets/atlases/garden_poses_source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "sha256": "4c260470959de64c892b55220823be9c0cd298c089231515b7be72cc73cea58f",
+      "role": "기존 동작 표현 참고"
+    },
+    {
+      "id": "theme_a_decorated",
+      "file": "references/theme_a_decorated.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/scenes/redesign_tree_courtyard.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "a0204eecacc08641c6c28a5c3b5f1a2170e158b62df3f64bb3892acaad8af37b",
+      "role": "A 나무 그늘 마당 완성 공간 기준"
+    },
+    {
+      "id": "theme_a_empty",
+      "file": "references/theme_a_empty.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/backgrounds/redesign_tree_empty.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "4e76269eab51b34d2e0285b32f94019e1c7af75b76610e4f9b8ae0ba39ca646f",
+      "role": "A 나무 그늘 마당 빈 배경 기준"
+    },
+    {
+      "id": "theme_a_props",
+      "file": "references/theme_a_props.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/atlases/redesign_tree_props_source.png",
+      "width": 1671,
+      "height": 941,
+      "mode": "RGBA",
+      "sha256": "2f4fba90e270ff0feee04674cf9f788d9865b53cf537299340f1abfbce96ab85",
+      "role": "A 나무 그늘 마당 소품 기준"
+    },
+    {
+      "id": "theme_b_decorated",
+      "file": "references/theme_b_decorated.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/scenes/redesign_pond_veranda.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "f86332b18c7767cffe5c7bea1e8cca92adf766a8cebe46d2c59ba20eb711f2be",
+      "role": "B 연못과 툇마루 완성 공간 기준"
+    },
+    {
+      "id": "theme_b_empty",
+      "file": "references/theme_b_empty.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/backgrounds/redesign_pond_empty.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "aece98e6406e7111c4cbed07b5520a47ed0d9b8590f47e87906d7fd66338f3c4",
+      "role": "B 연못과 툇마루 빈 배경 기준"
+    },
+    {
+      "id": "theme_b_props",
+      "file": "references/theme_b_props.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/atlases/redesign_pond_props_source.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "2b8e5deb952551e0f51f6ef1a7feb815b1ca6354ec8d97200bf2904fb7e961a1",
+      "role": "B 연못과 툇마루 소품 기준"
+    },
+    {
+      "id": "theme_c_decorated",
+      "file": "references/theme_c_decorated.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/scenes/redesign_greenhouse.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "c7c79c8ca6110345ff81b2539ea372364c2e42b48370917b9cf5f56514bd2efd",
+      "role": "C 숲속 온실 완성 공간 기준"
+    },
+    {
+      "id": "theme_c_empty",
+      "file": "references/theme_c_empty.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/backgrounds/redesign_greenhouse_empty.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "ba83d9a144dcf1e895ef5c112813a637244934f4c9c88f225eb90b088a20f992",
+      "role": "C 숲속 온실 빈 배경 기준"
+    },
+    {
+      "id": "theme_c_props",
+      "file": "references/theme_c_props.png",
+      "source_workspace_relative": "outputs/garden_redesign_v3/atlases/redesign_greenhouse_props_source.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "2339e53916de8754741b34d6a45b5caa56cf3eec52697da08e4ef36dcadfb4ef",
+      "role": "C 숲속 온실 소품 기준"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "식물집사",
+  "short_name": "식물집사",
+  "description": "작은 행동이 정원에 쌓이는 일상 기록 앱 데모",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#fbf6e6",
+  "theme_color": "#3f7a2a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
